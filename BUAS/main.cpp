@@ -13,6 +13,11 @@ void pollEvents(Window &window, Player &player)
 	}
 }
 
+void update()
+{
+
+}
+
 int main(int argc, char **argv)
 {
 	const int _frameDelay = 1000 / 60;

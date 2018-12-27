@@ -1,5 +1,5 @@
 #include "player.h"
-
+#include "textureLoader.h"
 
 Player::Player(int w, int h, int x, int y, int r, int g, int b, int a) :
 	_w(w), _h(h), _x(x), _y(y), _r(r), _g(g), _b(b), _a(a)
@@ -7,11 +7,7 @@ Player::Player(int w, int h, int x, int y, int r, int g, int b, int a) :
 Player::Player(int w, int h, int x, int y, const std::string &image_path) :
 	_w(w), _h(h), _x(x), _y(y)
 {
-	auto surface = IMG_Load(image_path.c_str());
-	_imageTexture = SDL_CreateTextureFromSurface(Window::renderer, surface);
-	if (!surface || !_imageTexture)
-		cerr << "failed creating texture\n";
-	SDL_FreeSurface(surface);
+	_imageTexture = TextureLoader::LoadTexture(image_path.c_str(), Window::renderer);
 }
 
 Player::~Player()
